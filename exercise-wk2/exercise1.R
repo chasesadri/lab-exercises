@@ -1,3 +1,6 @@
+library("stringr")
+
+
 ## Part 1: Debugging
 
 my.num <- 6
@@ -9,7 +12,7 @@ my.vector <- c(my.num, initials)
 vector.sum <- sum(my.vector)
 
 # Describe why this doesn't work: 
-# 
+# it's adding two different kinds of variables
 
 install.packages("stringr")
 
@@ -30,12 +33,23 @@ said.the.famous <- paste(my.line, " - ", initial)
 
 # Make a vector and use typeof to check what type R considers it to be
 
+typeof(c(1, 4, 6))
+
 # Write a function `CompareLength` that takes in 2 vectors, and returns the sentence:
 # "The difference in lengths is N"
 
+CompareLength <- function(v1, v2) {
+  diff <- abs(length(v1) - length(v2))
+  phrase <- paste("The difference in lengths is", diff)
+  return(phrase)
+}
 
 # Pass two vectors of different length to your `CompareLength` function
 
+vector1 <- c(1, 2, 3, 4, 5)
+vector2 <- c(1, 2, 3)
+
+print(CompareLength(vector2, vector1))
 
 # Write a function `DescribeDifference` that will return one of the following statements:
 # "Your first vector is longer by N elements"
